@@ -7,7 +7,7 @@
     :class="className"
     fill="none"
   >
-    <path d="M.295 10.59 4.875 6 .295 1.41 1.705 0l6 6-6 6z" fill="currentColor"/>
+    <path d="M7.705 10.59 3.125 6l4.58-4.59L6.295 0l-6 6 6 6z" fill="currentColor"/>
   </svg>
 </template>
 
