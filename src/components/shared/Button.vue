@@ -2,25 +2,26 @@
   <button :class="[
     'px-4 py-2 rounded-md font-medium select-none',
     'focus:outline-none',
-    variantClasses[variant],
+    resolvedVariantClass,
     sizeClasses[size],
     { 'opacity-40 cursor-not-allowed pointer-events-none grayscale': disabled },
-    { 'transition-all duration-200 cursor-pointer hover:shadow-md active:scale-95': !disabled },
+    { 'transition-all duration-200 hover:shadow-md active:scale-95 cursor-pointer': !disabled },
   ]" :disabled="disabled" @click="$emit('click')">
     <slot></slot>
   </button>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
 
-type ButtonVariant = 'primary'
+type ButtonVariant = 'primary' | 'outlined' | 'text'
 type ButtonSize = 'sm' | 'md' | 'lg'
 
 const props = defineProps({
   variant: {
     type: String as () => ButtonVariant,
     default: 'primary',
-    validator: (value: string) => ['primary'].includes(value)
+    validator: (value: string) => ['primary', 'outlined', 'text'].includes(value)
   },
   size: {
     type: String as () => ButtonSize,
@@ -35,13 +36,22 @@ const props = defineProps({
 
 defineEmits(['click'])
 
-const variantClasses = computed(() => ({
-  primary: 'bg-primary text-white hover:bg-primary/90',
-}))
+const resolvedVariantClass = computed(() => {
+  switch (props.variant) {
+    case 'primary':
+      return 'bg-primary text-white hover:bg-primary/90';
+    case 'outlined':
+      return 'border border-primary text-primary hover:bg-primary/10';
+    case 'text':
+      return 'text-primary hover:bg-primary/10';
+    default:
+      return 'bg-primary text-white hover:bg-primary/90';
+  }
+});
 
-const sizeClasses = computed(() => ({
+const sizeClasses = {
   sm: 'text-sm px-3 py-1.5',
   md: 'text-base px-4 py-2',
   lg: 'text-lg px-5 py-2.5'
-}))
+};
 </script>
