@@ -2,11 +2,11 @@
   <div class="bg-background">
     <GradientWrapper class="px-4">
       <Header />
-      <SearchCharacters @onSearch="onHandleSearch" />
+      <SearchCharacters :value="searchQuery" @onSearch="onHandleSearch" />
     </GradientWrapper>
 
     <div class="container mx-auto">
-      <div v-if="characters && status === 'success'" class="mt-4">
+      <div v-if="characters && characters.characters.length && status === 'success'" class="mt-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           <div
             class="flex justify-center p-3"
@@ -19,14 +19,18 @@
       </div>
 
       <div
-        v-else
+        v-else-if="status === 'pending'"
         class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
       >
         <CharacterCardSkeleton v-for="i in limit" :key="`skeleton-${i}`" />
       </div>
 
+      <div class="mt-12" v-else>
+        <NoResult @back-to-first-page="resetSearch" />
+      </div>
+
       <Pagination
-        v-if="currentPage && characters && characters.total"
+        v-if="characters && characters?.totalPages > 1"
         :currentPage="currentPage"
         :totalPages="characters.totalPages"
         @change="changePage"
@@ -42,6 +46,8 @@ import CharacterCard from "@/components/shared/characters/CharacterCard.vue";
 import CharacterCardSkeleton from "@/components/shared/characters/CharacterCardSkeleton.vue";
 import GradientWrapper from "@/components/shared/GradientWrapper.vue";
 import Pagination from "@/components/shared/Pagination.vue";
+import NoResult from "@/components/pages/home/NoResult.vue";
+
 
 const searchQuery = ref("");
 const currentPage = ref(1);
@@ -63,5 +69,10 @@ const onHandleSearch = (search: string) => {
 
 const changePage = (newPage: number) => {
   currentPage.value = newPage;
+};
+
+const resetSearch = () => {
+  searchQuery.value = "";
+  currentPage.value = 1;
 };
 </script>

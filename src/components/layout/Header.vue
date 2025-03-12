@@ -1,8 +1,8 @@
 <template>
   <header class="mb-6 md:mb-12">
-    <Button class="uppercase">
-      Logo
-    </Button>
+    <RouterLink to="/">
+      <NuxtImg src="/logo.png" />
+    </RouterLink>
   </header>
 </template>
 
