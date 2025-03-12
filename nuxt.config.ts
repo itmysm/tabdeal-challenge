@@ -17,4 +17,12 @@ export default defineNuxtConfig({
   image: {
     dir: 'assets/images',
   },
+
+  runtimeConfig: {
+    marvelPrivateKey: process.env.MARVEL_PRIVATE_KEY,
+    public: {
+      baseUrl: process.env.BASE_URL,
+      marvelPublicKey: process.env.MARVEL_PUBLIC_KEY,
+    }
+  },
 })
