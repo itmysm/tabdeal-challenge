@@ -8,7 +8,7 @@
       loading="lazy"
       quality="70"
     />
-    <div class="text-base group-hover:text-primary transition-colors text-foreground truncate max-w-[296px]">
+    <div class="text-base font-medium group-hover:text-primary transition-colors text-foreground truncate max-w-[296px]">
       {{ item.name }}
     </div>
   </div>

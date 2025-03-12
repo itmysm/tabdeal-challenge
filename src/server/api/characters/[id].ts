@@ -1,16 +1,9 @@
 import { createError, defineEventHandler } from "h3";
 import md5 from "md5";
-import { Character, ComicList, SeriesList } from "../../../types/api";
+import { Character } from "../../../types/api";
 
 export default defineEventHandler(async (event) => {
   const { id } = event.context.params;  
-
-  if (!id) {
-    throw createError({
-      statusCode: 400,
-      message: "Character ID is required",
-    });
-  }
 
   const baseUrl = process.env.BASE_URL;
   const publicKey = process.env.MARVEL_PUBLIC_KEY;
@@ -54,7 +47,6 @@ export default defineEventHandler(async (event) => {
       series: seriesData.data,
     } as Character;
   } catch (error) {
-    console.error("Error fetching Marvel data:", error);
     throw createError({
       statusCode: 500,
       message: "Error fetching Marvel data",

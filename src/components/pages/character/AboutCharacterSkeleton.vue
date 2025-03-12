@@ -1,6 +1,6 @@
 <template>
   <div class="w-full flex flex-col md:flex-row gap-y-8 md:gap-x-10 animate-pulse">
-    <div class="w-40 40 rounded-lg bg-background-secondary" />
+    <div class="w-40 h-40 md:w-60 md:h-60 rounded-lg bg-background-secondary" />
     <div class="w-full flex flex-col justify-center gap-y-4">
       <span class="h-5 w-1/3 rounded-lg bg-background-secondary" />
       <div class="flex flex-col gap-y-2">
