@@ -9,13 +9,9 @@ export interface Character {
   id: number;
   name: string;
   description: string;
-  modified: string;
   thumbnail: Thumbnail;
-  resourceURI: string;
   comics: ComicList;
   series: SeriesList;
-  stories: StoryList;
-  urls: Url[];
 }
 
 export interface Thumbnail {
@@ -24,50 +20,34 @@ export interface Thumbnail {
 }
 
 export interface ComicList {
-  available: number;
-  collectionURI: string;
-  items: ComicItem[];
-  returned: number;
-}
-
-export interface ComicItem {
-  resourceURI: string;
-  name: string;
+  total: number;
+  count: string;
+  results: ComicItem[];
 }
 
 export interface SeriesList {
-  available: number;
-  collectionURI: string;
-  items: SeriesItem[];
-  returned: number;
+  total: number;
+  count: string;
+  results: SeriesItem[];
 }
 
-export interface StoryList {
-  available: number;
-  collectionURI: string;
-  items: StoryItem[];
-  returned: number;
+export interface SeriesItem {
+  id: number;
+  title: string;
+  description: string;
+  thumbnail: Thumbnail;
+  urls: Url[];
+}
+
+export interface ComicItem {
+  id: number;
+  title: string;
+  description: string;
+  thumbnail: Thumbnail;
+  urls: Url[];
 }
 
 export interface Url {
   type: string;
   url: string;
-}
-
-export interface ComicList {
-  available: number;
-  collectionURI: string;
-  items: ComicItem[];
-  returned: number;
-}
-
-export interface SeriesItem {
-  resourceURI: string;
-  name: string;
-}
-
-export interface StoryItem {
-  resourceURI: string;
-  name: string;
-  type: string;
 }

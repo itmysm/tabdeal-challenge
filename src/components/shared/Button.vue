@@ -31,21 +31,29 @@ const props = defineProps({
   disabled: {
     type: Boolean,
     default: false
+  },
+  color: {
+    type: String,
+    default: 'primary'
   }
 })
 
 defineEmits(['click'])
 
 const resolvedVariantClass = computed(() => {
+  const colorClass = `bg-${props.color} text-white hover:bg-${props.color}/90`;
+  const outlinedClass = `border border-${props.color} text-${props.color} hover:bg-${props.color}/10`;
+  const textClass = `text-${props.color} hover:bg-${props.color}/10`;
+
   switch (props.variant) {
     case 'primary':
-      return 'bg-primary text-white hover:bg-primary/90';
+      return colorClass;
     case 'outlined':
-      return 'border border-primary text-primary hover:bg-primary/10';
+      return outlinedClass;
     case 'text':
-      return 'text-primary hover:bg-primary/10';
+      return textClass;
     default:
-      return 'bg-primary text-white hover:bg-primary/90';
+      return colorClass;
   }
 });
 
