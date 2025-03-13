@@ -13,9 +13,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/image"],
   image: {
-    dir: "assets/images",
+    dir: "src/assets/images",
     domains: ['i.annihil.us'],
-    provider: "ipx"
   },
 
   runtimeConfig: {

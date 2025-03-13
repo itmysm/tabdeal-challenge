@@ -5,7 +5,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/components/*": ["./src/components/*"],
-      "@/types/*": ["./src/types/*"]
+      "@/types/*": ["./src/types/*"],
+      "@/assets/*": ["./public/assets/*"]
     },
     "types": ["vue"]
   }
