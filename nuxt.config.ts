@@ -14,7 +14,8 @@ export default defineNuxtConfig({
   modules: ["@nuxt/image"],
   image: {
     dir: "assets/images",
-    domains: ['i.annihil.us']
+    domains: ['i.annihil.us'],
+    provider: 'netlify'
   },
 
   runtimeConfig: {
