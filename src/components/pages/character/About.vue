@@ -1,7 +1,8 @@
 <template>
   <div v-if="character" class="w-full flex flex-col md:flex-row gap-y-8 md:gap-x-10">
     <NuxtImg class="w-36 h-36 md:w-60 md:h-60 rounded-lg"
-      :src="character.thumbnail.path + '.' + character.thumbnail.extension" :alt="character.name" />
+      :src="character.thumbnail.path + '.' + character.thumbnail.extension" :alt="character.name"
+      :placeholder="`data:image/svg+xml;base64,${toBase64(shimmer(240, 240))}`" />
     <div class="flex flex-col justify-center">
       <h1 class="text-2xl font-bold text-foreground">{{ character.name }}</h1>
 

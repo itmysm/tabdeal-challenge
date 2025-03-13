@@ -73,14 +73,14 @@ const props = defineProps({
   },
   maxVisiblePages: {
     type: Number,
-    default: 5
+    default: 4
   }
 });
 
 const emit = defineEmits(["change"]);
 
 const navButtonClasses =
-  "px-3 py-2 rounded text-foreground transition-all duration-300 select-none cursor-pointer";
+  "px-2 md:px-3 py-2 rounded text-foreground transition-all duration-300 select-none cursor-pointer";
 const navButtonDisabledClasses = "opacity-50 !cursor-not-allowed text-secondary";
 const pageButton =
   "w-8 h-8 md:w-10 md:h-10 cursor-pointer text-lg font-semibold text-sm md:text-base text-secondary rounded-full hover:bg-primary hover:text-foreground transition-all duration-300";

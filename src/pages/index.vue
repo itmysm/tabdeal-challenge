@@ -24,7 +24,7 @@
         <NoResult @back-to-first-page="resetSearch" />
       </div>
 
-      <Pagination v-if="characters && characters?.totalPages > 1" :currentPage="currentPage"
+      <Pagination v-if="characters && characters?.totalPages > 1" class="mt-12" :currentPage="currentPage"
         :totalPages="characters.totalPages" @change="changePage" />
     </div>
   </div>
@@ -45,7 +45,29 @@ const currentPage = ref(1);
 const limit = 12;
 
 useHead({
-  title: "Marvel Characters",
+  title: "Marvel Characters | Explore Marvel Universe",
+  meta: [
+    {
+      name: 'description',
+      content: 'Explore the vast Marvel Universe and discover detailed information about your favorite Marvel characters, their comics, and series.'
+    },
+    {
+      name: 'keywords',
+      content: 'Marvel, superheroes, comics, characters, Marvel Universe'
+    },
+    {
+      property: 'og:title',
+      content: 'Marvel Characters | Explore Marvel Universe'
+    },
+    {
+      property: 'og:description',
+      content: 'Explore the vast Marvel Universe and discover detailed information about your favorite Marvel characters, their comics, and series.'
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    }
+  ]
 });
 
 const { data: characters, status } = useFetch("/api/characters/characters", {

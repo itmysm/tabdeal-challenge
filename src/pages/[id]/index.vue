@@ -53,11 +53,43 @@ if (error.value) {
 }
 
 useHead({
-  title: computed(() => character ? `Marvel Character - ${character.value?.name}` : ''),
+  title: computed(() => character.value ? `${character.value.name} | Marvel Character Profile` : 'Marvel Character'),
   meta: [
     {
       name: 'description',
-      content: computed(() => character ? `Marvel Character Description - ${character.value?.description}` : '')
+      content: computed(() => character.value 
+        ? `Learn about ${character.value.name}. ${character.value.description || 'Explore their comics, series, and more information about this Marvel character.'}`
+        : 'Discover Marvel character details, comics, and series.'
+      )
+    },
+    {
+      name: 'keywords',
+      content: computed(() => character.value 
+        ? `Marvel, ${character.value.name}, comics, series, superhero, character profile`
+        : 'Marvel, character, comics, series'
+      )
+    },
+    {
+      property: 'og:title',
+      content: computed(() => character.value ? `${character.value.name} | Marvel Character Profile` : 'Marvel Character')
+    },
+    {
+      property: 'og:description',
+      content: computed(() => character.value 
+        ? `Learn about ${character.value.name}. ${character.value.description || 'Explore their comics, series, and more information about this Marvel character.'}`
+        : 'Discover Marvel character details, comics, and series.'
+      )
+    },
+    {
+      property: 'og:type',
+      content: 'profile'
+    },
+    {
+      property: 'og:image',
+      content: computed(() => character.value 
+        ? `${character.value.thumbnail.path}.${character.value.thumbnail.extension}`
+        : ''
+      )
     }
   ]
 });
